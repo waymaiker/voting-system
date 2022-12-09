@@ -1,2 +1,2 @@
-# Solidity-Projects
-Several projects in solidity
+# Solidity Projects
+
