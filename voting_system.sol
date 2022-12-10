@@ -31,7 +31,7 @@ contract Voting is Ownable {
   address[] registeredVotersAddresses;
   uint winningProposalId;
   Proposal[] proposals;
-  
+
   WorkflowStatus proposalSessionStatus;
   WorkflowStatus voteSessionStatus;
 
@@ -82,21 +82,19 @@ contract Voting is Ownable {
   }
 
   function stopVotingSession() external onlyOwner onlyWhenVotingSessionStarted {
-    require(voteSessionStatus == WorkflowStatus.VotingSessionStarted, "Voting session hasnt started yet");
-
     voteSessionStatus = WorkflowStatus.VotingSessionEnded;
     emit WorkflowStatusChange(WorkflowStatus.VotingSessionStarted, WorkflowStatus.VotingSessionEnded);
   }
 
   function voteSessionEndedSetWinnerProposalId() external onlyOwner {
     require(voteSessionStatus == WorkflowStatus.VotingSessionEnded, "Voting session hasnt ended yet");
-    
+
     for(uint i = 0; i<proposals.length; i++){
       if(proposals[i].voteCount > winningProposalId){
-        winningProposalId = i;        
+        winningProposalId = i;
       }
     }
-    
+
     voteSessionStatus = WorkflowStatus.VotesTallied;
     emit WorkflowStatusChange(WorkflowStatus.VotingSessionEnded, WorkflowStatus.VotesTallied);
   }
@@ -113,14 +111,14 @@ contract Voting is Ownable {
 
   function createProposal(string memory _description) external onlyRegisteredVoter onlyWhenProposalRegistrationStarted {
     if(bytes(_description).length == 0){ revert Voting__ProposalDescriptionCantBeEmpty(); }
-    
+
     proposals.push(Proposal(_description, 0));
     emit ProposalRegistered(proposals.length);
   }
 
   function vote(uint _proposalId) external onlyRegisteredVoter onlyWhenVotingSessionStarted {
     if(registredVoters[msg.sender].hasVoted == true){ revert Voting__VoterHasAlreadyVoted(); }
-    
+
     registredVoters[msg.sender].hasVoted = true;
     registredVoters[msg.sender].votedProposalId = _proposalId;
     proposals[_proposalId].voteCount += 1;
