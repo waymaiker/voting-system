@@ -116,6 +116,10 @@ contract Voting is Ownable {
     emit ProposalRegistered(proposals.length);
   }
 
+  function getAllProposals() external view onlyRegisteredVoter returns(Proposal[] memory) {
+    return proposals;
+  }
+
   function vote(uint _proposalId) external onlyRegisteredVoter onlyWhenVotingSessionStarted {
     if(registredVoters[msg.sender].hasVoted == true){ revert Voting__VoterHasAlreadyVoted(); }
 
