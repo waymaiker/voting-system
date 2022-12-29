@@ -24,12 +24,12 @@ Divided into 3 files:
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_workflows.png)
 
 ### [METHODS - votingsystem_methods.test.js](https://github.com/waymaiker/voting-system/blob/master/test/unit/votingsystem_methods.test.js)
-#### What are requires to them to work well, what kind of event they should emit while working well and what could make them not working
+#### What are required to them to work well, what kind of event they should emit while working well and what could make them not working
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_methods.png)
 
 
 ### [STATES - votingsystem_state.test.js](https://github.com/waymaiker/voting-system/blob/master/test/unit/votingsytem_state.test.js)
-#### What are requires to them to work well, what kind of event they should emit while working well and what could make them not working
+#### What are required to them to work well, what kind of event they should emit while working well and what could make them not working
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_state.png)
 
 
