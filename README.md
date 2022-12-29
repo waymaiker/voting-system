@@ -15,20 +15,20 @@ Here I focused on having at least 90% of branch tests coverage.
 
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/test_coverage.png) 
 
-***Currently having 49 tests.***  
-Splitted in 3 files:  
+***Currently having 50 tests.***  
+Divided into 3 files: 
 
 
-### WORKFLOW
+### [WORKFLOW - votingsystem_workflow.test.js](https://github.com/waymaiker/voting-system/blob/master/test/integration/voingsystem_workflow.test.js)
 #### 
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_workflows.png)
 
-### METHODS
+### [METHODS - votingsystem_methods.test.js](https://github.com/waymaiker/voting-system/blob/master/test/unit/votingsystem_methods.test.js)
 #### What are requires to them to work well, what kind of event they should emit while working well and what could make them not working
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_methods.png)
 
 
-### STATES
+### [STATES - votingsystem_state.test.js](https://github.com/waymaiker/voting-system/blob/master/test/unit/votingsytem_state.test.js)
 #### What are requires to them to work well, what kind of event they should emit while working well and what could make them not working
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_state.png)
 
@@ -66,3 +66,10 @@ yarn hardhat deploy (deploy your smart contract)
 yarn hardhat test
 yarn hardhat coverage
 ```
+
+## ressources
+
+* https://www.chaijs.com/api/bdd/
+* https://hardhat.org/tutorial/testing-contracts
+* https://hardhat.org/hardhat-chai-matchers/docs/overview
+* https://docs.ethers.org/v5/api/utils/bignumber/
