@@ -80,24 +80,32 @@ const { developmentChains } = require("../../helper-hardhet-config")
         })
 
         describe("Events", function() {
-          it("using ADDVOTER methods, should EMITS VoterRegistered", async function() {
-            await expect(voting.addVoter(accounts[1].getAddress())).to.emit(voting, "VoterRegistered")
+          it("using ADDVOTER methods, should EMITS VoterRegistered, with the voter address", async function() {
+            await expect(voting.addVoter(accounts[1].getAddress()))
+              .to.emit(voting, "VoterRegistered")
+              .withArgs(await accounts[1].getAddress())
           })
-          it("using ADDPROPOSAL methods, should EMITS ProposalRegistered", async function() {
+
+          it("using ADDPROPOSAL methods, should EMITS ProposalRegistered with the index of proposal", async function() {
             await voting.addVoter(accounts[1].getAddress())
             await voting.startProposalsRegistering()
 
-            await expect(voting.connect(accounts[1]).addProposal("Proposal 1")).to.emit(voting, "ProposalRegistered")
+            await expect(voting.connect(accounts[1]).addProposal("Proposal 1"))
+              .to.emit(voting, "ProposalRegistered")
+              .withArgs(1)
           })
 
-          it("using SETVOTE methods, should EMITS Voted", async function() {
+          it("using SETVOTE methods, should EMITS Voted, with the address of the voter and the vote index", async function() {
             await voting.addVoter(accounts[1].getAddress())
             await voting.startProposalsRegistering()
             await voting.connect(accounts[1]).addProposal('Proposal 1')
             await voting.endProposalsRegistering()
             await voting.startVotingSession()
-
-            await expect(voting.connect(accounts[1]).setVote(1)).to.emit(voting, "Voted")
+            
+            const proposalIdChosen = 1
+            await expect(voting.connect(accounts[1]).setVote(proposalIdChosen))
+              .to.emit(voting, "Voted")
+              .withArgs(await accounts[1].getAddress(), proposalIdChosen)
           })
         })
 

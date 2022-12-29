@@ -88,7 +88,9 @@ const { developmentChains } = require("../../helper-hardhet-config")
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === RegisteringVoters.toString())
 
-              await expect(voting.startProposalsRegistering()).to.emit(voting, "WorkflowStatusChange")
+              await expect(voting.startProposalsRegistering())
+                .to.emit(voting, "WorkflowStatusChange")
+                .withArgs(0, 1)
 
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === ProposalsRegistrationStarted.toString())
@@ -101,7 +103,9 @@ const { developmentChains } = require("../../helper-hardhet-config")
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === ProposalsRegistrationStarted.toString())
 
-              await expect(await voting.endProposalsRegistering()).to.emit(voting, "WorkflowStatusChange")
+              await expect(await voting.endProposalsRegistering())
+                .to.emit(voting, "WorkflowStatusChange")
+                .withArgs(1, 2)
 
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === ProposalsRegistrationEnded.toString())
@@ -115,7 +119,9 @@ const { developmentChains } = require("../../helper-hardhet-config")
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === ProposalsRegistrationEnded.toString())
 
-              await expect(await voting.startVotingSession()).to.emit(voting, "WorkflowStatusChange")
+              await expect(await voting.startVotingSession())
+                .to.emit(voting, "WorkflowStatusChange")
+                .withArgs(2, 3)
 
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === VotingSessionStarted.toString())
@@ -130,7 +136,9 @@ const { developmentChains } = require("../../helper-hardhet-config")
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === VotingSessionStarted.toString())
 
-              await expect(await voting.endVotingSession()).to.emit(voting, "WorkflowStatusChange")
+              await expect(await voting.endVotingSession())
+                .to.emit(voting, "WorkflowStatusChange")
+                .withArgs(3, 4)
 
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === VotingSessionEnded.toString())
@@ -146,7 +154,9 @@ const { developmentChains } = require("../../helper-hardhet-config")
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === VotingSessionEnded.toString())
 
-              await expect(await voting.tallyVotes()).to.emit(voting, "WorkflowStatusChange")
+              await expect(await voting.tallyVotes())
+                .to.emit(voting, "WorkflowStatusChange")
+                .withArgs(4, 5)
 
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === VotesTallied.toString())
