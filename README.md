@@ -21,7 +21,7 @@ Splitted in 3 files:
 
 ### WORKFLOW
 #### 
-![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_workflow.png)
+![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_workflows.png)
 
 ### METHODS
 #### What are requires to them to work well, what kind of event they should emit while working well and what could make them not working
