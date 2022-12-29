@@ -12,9 +12,25 @@ Few rules:
 ✔️ The proposal that gets the most votes wins.  
 
 Here I focused on having at least 90% of branch tests coverage.  
-***Currently having 49 tests.***
 
-![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/test_coverage.png)
+![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/test_coverage.png) 
+
+***Currently having 49 tests.***  
+Splitted in 3 files:  
+
+
+### WORKFLOW
+#### 
+![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_workflow.png)
+
+### METHODS
+#### What are requires to them to work well, what kind of event they should emit while working well and what could make them not working
+![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_methods.png)
+
+
+### STATES
+#### What are requires to them to work well, what kind of event they should emit while working well and what could make them not working
+![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_state.png)
 
 
 ## How to use this project
