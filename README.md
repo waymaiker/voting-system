@@ -14,7 +14,7 @@ Few rules:
 Here I focused on having at least 90% of branch tests coverage.  
 ***Currently having 49 tests.***
 
-![Ceci est un exemple d’image](https://example.com/bild.jpg)
+![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/test_coverage.png)
 
 
 ## How to use this project
