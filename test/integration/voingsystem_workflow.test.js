@@ -4,7 +4,7 @@ const { developmentChains } = require("../../helper-hardhet-config")
 
 !developmentChains.includes(network.name)
   ? describe.skip
-  : describe("Units tests METHODS of Voting smart contract", function(){
+  : describe("Units tests WORKFLOW of Voting smart contract", function(){
       let accounts;
       let voting;
 
