@@ -67,7 +67,7 @@ yarn hardhat test
 yarn hardhat coverage
 ```
 
-## ressources
+## Ressources
 
 * https://www.chaijs.com/api/bdd/
 * https://hardhat.org/tutorial/testing-contracts
