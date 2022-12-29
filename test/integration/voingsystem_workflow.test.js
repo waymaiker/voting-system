@@ -21,7 +21,7 @@ const { developmentChains } = require("../../helper-hardhet-config")
       })
 
       describe("Tests: WORKFLOW", function() {
-        it("The administrator registers a white list of voters identified by their Ethereum address", async () => {
+        it("The administrator registers a whitelist of voters identified by their Ethereum address", async () => {
           await expect(voting.addVoter(accounts[1].getAddress())).not.to.be.reverted
           await expect(voting.addVoter(accounts[2].getAddress())).not.to.be.reverted
           await expect(voting.addVoter(accounts[3].getAddress())).not.to.be.reverted
