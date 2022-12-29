@@ -7,7 +7,7 @@ const { developmentChains } = require("../../helper-hardhet-config")
   : describe("Units tests STATE of Voting smart contract", function(){
       let accounts;
       let voting;
-      
+
       before(async () => {
         accounts = await ethers.getSigners()
         deployer = accounts[0]
@@ -42,6 +42,7 @@ const { developmentChains } = require("../../helper-hardhet-config")
 
           describe("startVotingSession", async function(){
             it("should start a voting registering session", async function(){
+              // Starting the Proposal Registering session, also create a genesis proposal
               await voting.startProposalsRegistering()
               await voting.endProposalsRegistering()
               await expect(await voting.startVotingSession()).not.to.be.reverted
@@ -54,6 +55,21 @@ const { developmentChains } = require("../../helper-hardhet-config")
               await voting.endProposalsRegistering()
               await voting.startVotingSession()
               await expect(await voting.endVotingSession()).not.to.be.reverted
+            })
+          })
+
+          describe("tallyVotes", async function(){
+            it("should set the winning proposal id", async function(){
+              await voting.startProposalsRegistering()
+              await voting.endProposalsRegistering()
+              await voting.startVotingSession()
+              await voting.endVotingSession()
+
+              await expect(voting.tallyVotes()).not.to.be.reverted
+              const winningProposalID = await voting.winningProposalID.call()
+
+              // No vote has been made, proposal genesis is by default the winning proposal
+              await assert(ethers.BigNumber.from(winningProposalID).toString() === ethers.BigNumber.from(0).toString())
             })
           })
         })
@@ -98,7 +114,7 @@ const { developmentChains } = require("../../helper-hardhet-config")
               await voting.endProposalsRegistering()
               currentStatus = await voting.workflowStatus.call();
               assert(ethers.BigNumber.from(currentStatus).toString() === ProposalsRegistrationEnded.toString())
-      
+
               await expect(await voting.startVotingSession()).to.emit(voting, "WorkflowStatusChange")
 
               currentStatus = await voting.workflowStatus.call();
@@ -146,7 +162,7 @@ const { developmentChains } = require("../../helper-hardhet-config")
           })
 
           describe("endProposalsRegistering", async function(){
-            it("REVERT, when it is not the contract owner, who try to end a proposal registering session", async function(){                
+            it("REVERT, when it is not the contract owner, who try to end a proposal registering session", async function(){
               await expect(voting.connect(accounts[1]).endProposalsRegistering()).to.be.revertedWith("Ownable: caller is not the owner")
             })
 
@@ -156,7 +172,7 @@ const { developmentChains } = require("../../helper-hardhet-config")
           })
 
           describe("startVotingSession", async function(){
-            it("REVERT, when it is not the contract owner, who try to start a voting session", async function(){                
+            it("REVERT, when it is not the contract owner, who try to start a voting session", async function(){
               await expect(voting.connect(accounts[1]).startVotingSession()).to.be.revertedWith("Ownable: caller is not the owner")
             })
 
@@ -164,9 +180,9 @@ const { developmentChains } = require("../../helper-hardhet-config")
               await expect(voting.startVotingSession()).to.be.revertedWith("Registering proposals phase is not finished")
             })
           })
-          
+
           describe("endVotingSession", async function(){
-            it("REVERT, when it is not the contract owner, who try to end a voting session", async function(){                
+            it("REVERT, when it is not the contract owner, who try to end a voting session", async function(){
               await expect(voting.connect(accounts[1]).endVotingSession()).to.be.revertedWith("Ownable: caller is not the owner")
             })
 
@@ -176,14 +192,14 @@ const { developmentChains } = require("../../helper-hardhet-config")
           })
 
           describe("tallyVotes", async function(){
-            it("REVERT, when it is not the contract owner, who try to tally the votes", async function(){                
+            it("REVERT, when it is not the contract owner, who try to tally the votes", async function(){
               await expect(voting.connect(accounts[1]).tallyVotes()).to.be.revertedWith("Ownable: caller is not the owner")
             })
 
             it("REVERT, when owner try to process and the current status is not equals to VotingSessionEnded", async function(){
               await expect(voting.tallyVotes()).to.be.revertedWith("Current status is not voting session ended")
             })
-          })      
+          })
       })
     })
   })
