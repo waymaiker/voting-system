@@ -30,6 +30,7 @@ Divided into 3 files:
 
 ### WORKFLOW
 [file - votingsystem_workflow.test.js](https://github.com/waymaiker/voting-system/blob/master/test/integration/voingsystem_workflow.test.js)
+
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_workflows.png)
 
 ### METHODS
