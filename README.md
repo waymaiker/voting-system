@@ -66,12 +66,14 @@ yarn install
 ```
 ### hardhat commands
 ```shell
-yarn hardhat node (Start the local Blockchain)
+# Start the local Blockchain
+yarn hardhat node
 ```
 
 #### In an other terminal tab
 ```shell
-yarn hardhat deploy (deploy your smart contract)
+# Deploy your smart contract
+yarn hardhat deploy
 ```
 
 #### test commands
