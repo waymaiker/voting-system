@@ -11,6 +11,15 @@ Few rules:
 ✔️ The winner is determined by simple majority.  
 ✔️ The proposal that gets the most votes wins.  
 
+## Contents
+- [Tests](#tests)
+  - [Workflow](#workflow)
+  - [Methods](#methods)
+  - [States](#states)
+- [How to use this project](#how-to-use-this-project)
+- [Resources](#resources)
+
+## Tests
 Here I focused on having at least 90% of branch tests coverage.  
 
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/test_coverage.png) 
@@ -19,16 +28,17 @@ Here I focused on having at least 90% of branch tests coverage.
 Divided into 3 files: 
 
 
-### [WORKFLOW - votingsystem_workflow.test.js](https://github.com/waymaiker/voting-system/blob/master/test/integration/voingsystem_workflow.test.js)
-#### 
+### WORKFLOW
+[file - votingsystem_workflow.test.js](https://github.com/waymaiker/voting-system/blob/master/test/integration/voingsystem_workflow.test.js)
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_workflows.png)
 
-### [METHODS - votingsystem_methods.test.js](https://github.com/waymaiker/voting-system/blob/master/test/unit/votingsystem_methods.test.js)
+### METHODS
+[file - votingsystem_methods.test.js](https://github.com/waymaiker/voting-system/blob/master/test/unit/votingsystem_methods.test.js)
 #### What are required to them to work well, what kind of event they should emit while working well and what could make them not working
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_methods.png)
 
-
-### [STATES - votingsystem_state.test.js](https://github.com/waymaiker/voting-system/blob/master/test/unit/votingsytem_state.test.js)
+### STATES
+[file - votingsystem_state.test.js](https://github.com/waymaiker/voting-system/blob/master/test/unit/votingsytem_state.test.js)
 #### What are required to them to work well, what kind of event they should emit while working well and what could make them not working
 ![Ceci est un exemple d’image](https://github.com/waymaiker/voting-system/blob/master/tests_description_state.png)
 
@@ -67,7 +77,7 @@ yarn hardhat test
 yarn hardhat coverage
 ```
 
-## Ressources
+## Resources
 
 * https://www.chaijs.com/api/bdd/
 * https://hardhat.org/tutorial/testing-contracts
